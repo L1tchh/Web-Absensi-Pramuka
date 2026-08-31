@@ -1,0 +1,455 @@
+/* ==========================================================================
+   style.css
+   Tema "buku saku pramuka": khaki, hijau hutan, coklat kulit, aksen emas.
+   ========================================================================== */
+
+:root {
+  --bg: #EEE7D3;
+  --paper: #FAF7EC;
+  --ink: #28331F;
+  --forest: #31402A;
+  --olive: #6C7B49;
+  --leather: #8A5A32;
+  --gold: #C89A3B;
+  --red: #A6403F;
+  --green: #4C7A3D;
+  --line: #D9CFAF;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Work Sans", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.pr-root { min-height: 100vh; }
+
+.display {
+  font-family: "Bebas Neue", Arial, sans-serif;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.mono { font-family: "IBM Plex Mono", monospace; }
+
+h1, h2, h3 { margin: 0; }
+
+button { font-family: inherit; cursor: pointer; }
+
+/* ------------------------------- Tombol umum ------------------------------ */
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform .12s ease, filter .12s ease;
+}
+.btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+.btn-primary { background: var(--forest); color: #fff; }
+.btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-ghost { background: rgba(255,255,255,0.15); color: #fff; }
+
+.icon-btn {
+  border: none;
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+.icon-btn.danger { background: rgba(166,64,63,0.15); color: var(--red); }
+
+/* -------------------------------- Input umum ------------------------------- */
+
+label { display: block; font-size: 12px; font-weight: 600; opacity: 0.7; margin-bottom: 4px; }
+
+.input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--ink);
+}
+.input:focus { outline: 2px solid var(--olive); outline-offset: 1px; }
+
+.error-text { color: var(--red); font-size: 12px; margin: 2px 0 0; }
+.success-text { color: var(--green); font-size: 12px; margin: 2px 0 0; }
+.hint-text { font-size: 12px; opacity: 0.6; margin: 0; }
+.empty-text { font-size: 14px; opacity: 0.55; }
+.empty-text.small { font-size: 12px; }
+.empty-cell { text-align: center; padding: 16px; font-size: 14px; opacity: 0.5; }
+
+/* ------------------------------- Layar Login ------------------------------- */
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+  background: radial-gradient(circle at 50% 0%, var(--paper), var(--bg));
+  text-align: center;
+}
+
+.login-title { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.login-title .display { font-size: 34px; color: var(--forest); }
+.icon-lg { font-size: 28px; }
+.icon-md { font-size: 20px; }
+
+.subtitle { font-size: 14px; opacity: 0.7; margin-bottom: 32px; }
+
+.login-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+}
+@media (max-width: 480px) {
+  .login-cards { grid-template-columns: 1fr; }
+}
+
+.login-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: transform .12s ease, filter .12s ease;
+}
+.login-card:hover { filter: brightness(0.97); transform: translateY(-2px); }
+.login-card-icon { font-size: 26px; }
+.login-card-title { font-weight: 600; }
+.login-card-sub { font-size: 12px; opacity: 0.6; text-align: center; }
+
+.login-form {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.login-form h2 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+
+.form-actions { display: flex; gap: 8px; margin-top: 6px; }
+.form-actions .btn { flex: 1; }
+
+/* --------------------------------- Header --------------------------------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--forest);
+  color: #fff;
+}
+.app-header-title { display: flex; align-items: center; gap: 8px; }
+.app-header-title .display { font-size: 24px; }
+.member-title p.leading-tight { line-height: 1; }
+.member-tag { font-size: 11px; opacity: 0.7; margin: 2px 0 0; }
+
+/* ---------------------------------- Tabs ----------------------------------- */
+
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 12px 12px 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.55;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+}
+.tab-btn.active { opacity: 1; color: var(--forest); border-bottom-color: var(--gold); }
+
+.tab-content { padding: 20px; background: var(--bg); display: flex; flex-direction: column; gap: 20px; }
+
+/* --------------------------------- Kartu ----------------------------------- */
+
+.reminder-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.reminder-card.urgent { border-left-color: var(--red); }
+.reminder-icon { font-size: 18px; }
+.reminder-body { flex: 1; }
+.reminder-label { font-size: 12px; opacity: 0.6; margin: 0; }
+.reminder-text { font-size: 14px; font-weight: 600; margin: 2px 0 0; }
+.reminder-badge {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(200,154,59,0.18);
+  color: var(--leather);
+  white-space: nowrap;
+}
+.reminder-card.urgent .reminder-badge { background: rgba(166,64,63,0.18); color: var(--red); }
+
+.stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.stat-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+.stat-value { font-size: 26px; font-weight: 700; margin: 0; }
+.stat-label { font-size: 12px; opacity: 0.6; margin: 2px 0 0; }
+
+.overview-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+.overview-actions { display: flex; flex-direction: column; gap: 8px; }
+
+.badge-ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.badge-ring {
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+}
+.badge-ring::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px dashed var(--gold);
+  opacity: 0.55;
+}
+.badge-ring-inner {
+  background: var(--paper);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge-ring-text { font-weight: 700; color: var(--forest); }
+.badge-label { font-size: 12px; font-weight: 600; margin: 4px 0 0; text-align: center; }
+.badge-sub { font-size: 11px; opacity: 0.65; margin: 0; text-align: center; }
+
+/* -------------------------------- Form baris -------------------------------- */
+
+.form-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.form-row.justify-between { justify-content: space-between; }
+.form-field { display: flex; flex-direction: column; gap: 4px; min-width: 160px; }
+.form-field.grow { flex: 1; }
+
+/* ---------------------------------- Tabel ----------------------------------- */
+
+.table-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--bg);
+  font-size: 12px;
+  font-weight: 700;
+}
+.data-table td { padding: 10px 12px; border-top: 1px solid var(--line); }
+.cell-strong { font-weight: 600; }
+.row-actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+.tagcode-pill {
+  background: rgba(200,154,59,0.18);
+  color: var(--leather);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* ----------------------------- Jenis Latihan grid --------------------------- */
+
+.training-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.training-type-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.training-type-name { font-weight: 600; font-size: 14px; }
+
+/* ---------------------------------- Jadwal ----------------------------------- */
+
+.schedule-list { display: flex; flex-direction: column; gap: 8px; }
+.schedule-row {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.schedule-info { display: flex; align-items: center; gap: 12px; }
+.schedule-date {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--bg);
+  white-space: nowrap;
+}
+.schedule-training { font-size: 14px; font-weight: 600; margin: 0; }
+.schedule-note { font-size: 12px; opacity: 0.6; margin: 2px 0 0; }
+
+/* --------------------------------- Absensi ----------------------------------- */
+
+.status-buttons { display: flex; gap: 6px; }
+.status-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--bg);
+  opacity: 0.4;
+}
+.status-btn.active { opacity: 1; }
+.status-btn.status-hadir.active { background: rgba(76,122,61,0.18); color: var(--green); }
+.status-btn.status-izin.active { background: rgba(200,154,59,0.18); color: var(--leather); }
+.status-btn.status-alpa.active { background: rgba(166,64,63,0.18); color: var(--red); }
+
+.score-slider { vertical-align: middle; width: 140px; }
+.score-value { font-size: 12px; margin-left: 6px; }
+.dash { opacity: 0.4; }
+
+/* -------------------------------- Pengaturan ---------------------------------- */
+
+.settings-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 380px;
+}
+.settings-card h3 { font-size: 15px; margin-bottom: 4px; }
+
+/* ----------------------------- Dashboard anggota ------------------------------ */
+
+.mini-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.mini-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.mini-stat-value { font-weight: 700; display: block; line-height: 1; }
+.mini-stat-label { font-size: 11px; opacity: 0.6; }
+.mini-stat-green .mini-stat-value { color: var(--green); }
+.mini-stat-gold .mini-stat-value { color: var(--leather); }
+.mini-stat-red .mini-stat-value { color: var(--red); }
+
+.section-title { font-size: 20px; color: var(--forest); margin-bottom: 12px; }
+
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.training-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.training-card-title { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+.training-card-row { display: flex; align-items: center; justify-content: space-between; }
+.training-card-meta { text-align: right; }
+.small-label { font-size: 11px; opacity: 0.6; margin: 0; }
+.training-card-divider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+}
+.score-big { font-size: 18px; font-weight: 700; color: var(--forest); margin: 0; }
+.align-right { text-align: right; }
+
+.improvement-none { font-size: 12px; opacity: 0.4; }
+.improvement-flat { font-size: 12px; font-weight: 700; }
+.improvement-up { font-size: 12px; font-weight: 700; color: var(--green); }
+.improvement-down { font-size: 12px; font-weight: 700; color: var(--red); }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.pill-green { background: rgba(76,122,61,0.18); color: var(--green); }
+.pill-gold { background: rgba(200,154,59,0.18); color: var(--leather); }
+.pill-red { background: rgba(166,64,63,0.18); color: var(--red); }
